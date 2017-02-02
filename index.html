@@ -1,0 +1,185 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Inline SVG</title>
+  <meta name="description" content="A jQuery plugin that inlines SVGs that are called as images to animate them. ">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,700,700i" rel="stylesheet">
+  <style>
+
+
+
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body,
+    html {
+      min-height: 100%;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      text-align: center;
+      color: #222;
+      font-size: 100%;
+      width: 100%;
+      overflow-x: hidden;
+
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcfcfc+0,edeff2+100 */
+      background: rgb(252,252,252); /* Old browsers */
+      background: -moz-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(237,239,242,1) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(252,252,252,1) 0%,rgba(237,239,242,1) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(252,252,252,1) 0%,rgba(237,239,242,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#edeff2',GradientType=0 ); /* IE6-9 */
+
+    }
+
+    a {
+      color: #00aed1;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #008faf;
+      text-decoration: underline;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-weight: 300;
+      text-transform: uppercase;
+      margin-top: 2em;
+      margin-bottom: .5em;
+    }
+
+    h1 {
+      font-weight: 300;
+      text-transform: uppercase;
+      font-size: 7vw;
+      padding-top: 3em;
+      margin-top: 0;
+      margin-bottom: 1em;
+    }
+
+    @media (min-width: 600px) {
+      h1 {  
+        font-size: 3.6vw;
+      }
+    }
+
+    h3 {
+      font-size: 1.8em;
+    }
+
+    h4 {
+      font-size: 1.5em;
+    }
+
+    @keyframes dash {
+      to {
+        stroke-dashoffset: 308;
+      }
+    }
+
+    .svg {
+      max-width: 200px;
+      cursor: pointer;
+    }
+
+    .svg polygon {
+      transition: stoke .5s ease-out, fill 2s ease-out;
+    }
+
+    .svg:hover polygon {
+      stroke: #00bdd6 !important;
+      fill: #00bdd6 !important;
+    }
+
+    .svg circle {
+      stroke-dasharray: 154;
+    }
+
+    .svg:hover circle {
+        stroke: #00bdd6 !important;
+       animation: dash 3s linear infinite;
+    }
+
+    
+
+    pre, code {
+      font-size: .92em;
+    }
+
+    pre {
+      background: #29393d;
+      color: #fff;
+      border-radius: 2px;
+      padding: 15px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+
+    .content {
+      padding: 4em 15px;
+      margin: 0 auto;
+      max-width: 600px;
+      line-height: 1.6em;
+      text-align: left;
+      
+    }
+
+    @media (max-width: 600px) {
+      .github-ribbon {  
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="https://github.com/zaneray/inline-svg" class="github-ribbon"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+  <h1>Inline SVG</h1>
+
+  <img src="svg/star.svg" class="inline-svg svg">
+
+    
+
+  <section class="content">
+    <p>Inline SVG is a simple jQuery plugin that embeds an svg in an image src into the page so you can use CSS animations. </p> 
+
+    
+</section>
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="js/inline-svg.js"></script>
+<script> 
+  $('.inline-svg').inlineSVG();
+</script>
+
+
+<script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  //   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  //   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  // ga('create', 'UA-86547929-1', 'auto');
+  // ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

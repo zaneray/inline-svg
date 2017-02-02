@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>star</title>
+  <g id="star">
+    <polygon points="49.9 17.13 58.33 41.89 84.48 42.25 63.54 57.92 71.27 82.9 49.9 67.83 28.53 82.9 36.27 57.92 15.32 42.25 41.48 41.89 49.9 17.13" style="fill: #fff;stroke: #777;stroke-miterlimit: 10"/>
+  </g>
+  <g id="circle">
+    <circle cx="49.9" cy="50.02" r="48.52" style="fill: none;stroke: #fff;stroke-miterlimit: 10"/>
+  </g>
+</svg>
