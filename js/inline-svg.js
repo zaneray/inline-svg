@@ -19,17 +19,25 @@ Currently just using this to inject them into the style guide. Pretty experiment
             classNames = $this.attr('class');
             
         var ajax = new XMLHttpRequest();
-          ajax.open("GET", svgUrl, true);
-          ajax.send();
-          ajax.onload = function(e) {
-            var div = document.createElement("div");
-            $this.replaceWith(ajax.responseText);
-            $parent.find('svg').attr('class', classNames);
+            ajax.open("GET", svgUrl, true);
+            ajax.send();
+            ajax.onload = function(e) {
+
+            //if the status is not 404 do the replacement otherwise do nothing.
+            if(ajax.status !== 404) {
+
+              var $svg = $(ajax.responseText);
+
+              $svg.attr('class', classNames + ' loaded');
+              $this.replaceWith($svg);
+              
+            } 
+            else {
+              $this.addClass('not-loaded');
+            }
+           
           }
       }
     });
   };
 }( jQuery ));
-
-
-
