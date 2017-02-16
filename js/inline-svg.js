@@ -10,7 +10,7 @@ Currently just using this to inject them into the style guide. Pretty experiment
     };
     
     $.extend( options, args );
-    this.each(function(){
+    this.not('.loaded').each(function(){
       var $this = $(this);
           
       if($this) {
