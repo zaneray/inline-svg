@@ -135,7 +135,6 @@
       margin: 0 auto;
       max-width: 600px;
       line-height: 1.6em;
-      text-align: left;
       
     }
 
@@ -156,7 +155,9 @@
 
   <section class="content">
     <p>Inline SVG is a simple jQuery plugin that embeds an svg in an image src into the page so you can use CSS animations. </p> 
-    <p>Mouseover the start to see the inline SVG animate.</p>
+    <p>Mouseover the star to see the inline SVG animate.</p>
+
+
     
 </section>
 
@@ -167,6 +168,12 @@
 <script src="js/inline-svg.js"></script>
 <script> 
   $('.inline-svg').inlineSVG();
+  $(window).load(function(){
+    setTimeout(function(){
+      $('.content').append('<h4>Dynamically Added Elements!</h4><p>This element was added to the DOM dynamically and it still inlines the SVG element.</p><div><img src="svg/star.svg"  class="inline-svg more-element svg"></div>');
+    },2000);
+  });
+ 
 </script>
 
 
