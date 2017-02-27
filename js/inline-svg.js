@@ -3,7 +3,9 @@
     var options = {
 
     };
-    
+
+    var selector = this.selector;
+
     $.extend( options, args );
 
     //function to inline SVGs as part of the jquery plugin or part of the MutationObserver event.
@@ -40,12 +42,12 @@
       //}
     });
 
-    //observe the DOM for mutations, if anything changes on the page scan it for new img.inline-svg
+    //observe the DOM for mutations, if anything changes on the page scan it for new img selector
     var observer = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
 
         if (mutation.type === 'childList' && mutation.addedNodes.length) {
-          var $inlineSVGs = $("img.inline-svg").not('.loaded');
+          var $inlineSVGs = $("img" + selector).not('.loaded');
 
           $inlineSVGs.each(function(){
             makeSVGInline($(this));
