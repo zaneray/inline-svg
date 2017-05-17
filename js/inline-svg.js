@@ -11,9 +11,7 @@
     //function to inline SVGs as part of the jquery plugin or part of the MutationObserver event.
     var makeSVGInline = function($el){
       if($el[0].nodeName === 'IMG') {
-        var svgUrl      = $el.attr('src'),
-        $parent     = $el.parent(),
-        classNames  = $el.attr('class');
+        var svgUrl      = $el.attr('src');
 
         //If there are multiple instances of the same image, load them all with a single ajax call
         var $imgInstances = $(selector).filter('[src="' + svgUrl + '"]');
@@ -29,7 +27,14 @@
 
               var $svg = $(ajax.responseText);
 
-              $imgInstances.replaceWith($svg).addClass('loaded');
+              $imgInstances.each(function() {
+                var $this = $(this),
+                    classNames = $(this).attr('class');
+
+                $svg.attr('class', classNames + ' loaded');
+
+                $this.replaceWith($svg);
+              });  
               
             } 
             else {
