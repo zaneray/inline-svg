@@ -15,6 +15,9 @@
         $parent     = $el.parent(),
         classNames  = $el.attr('class');
 
+        //If there are multiple instances of the same image, load them all with a single ajax call
+        var $imgInstances = $(selector).filter('[src="' + svgUrl + '"]');
+
         //this works better than $.ajax();
         var ajax = new XMLHttpRequest();
         ajax.open("GET", svgUrl, true);
@@ -27,11 +30,11 @@
               var $svg = $(ajax.responseText);
 
               $svg.attr('class', classNames + ' loaded');
-              $el.replaceWith($svg);
+              $imgInstances.replaceWith($svg);
               
             } 
             else {
-              $el.addClass('not-loaded');
+              $imgInstances.addClass('not-loaded');
             }
           }
         }
