@@ -29,8 +29,7 @@
 
               var $svg = $(ajax.responseText);
 
-              $svg.attr('class', classNames + ' loaded');
-              $imgInstances.replaceWith($svg);
+              $imgInstances.replaceWith($svg).addClass('loaded');
               
             } 
             else {
