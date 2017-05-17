@@ -4,36 +4,42 @@
 
     };
 
-    var selector = this.selector;
+    var selector = this.selector,
+        ajaxRequests = [];
 
     $.extend( options, args );
 
     //function to inline SVGs as part of the jquery plugin or part of the MutationObserver event.
     var makeSVGInline = function($el){
-      if($el[0].nodeName === 'IMG') {
+      if($el[0].nodeName === 'IMG' && !$el.hasClass('loaded')) {
         var svgUrl      = $el.attr('src');
 
-        //If there are multiple instances of the same image, load them all with a single ajax call
-        var $imgInstances = $(selector).filter('[src="' + svgUrl + '"]');
+        //if an ajax request has not already been sent for this url
+        if(ajaxRequests.indexOf(svgUrl) == -1) {
+          //If there are multiple instances of the same image, load them all with a single ajax call
+          var $imgInstances = $(selector).filter('[src="' + svgUrl + '"]');
 
-        //this works better than $.ajax();
-        var ajax = new XMLHttpRequest();
-        ajax.open("GET", svgUrl, true);
-        ajax.send();
+          //this works better than $.ajax();
+          var ajax = new XMLHttpRequest();
+          ajax.open("GET", svgUrl, true);
+          ajax.send();
+          ajaxRequests.push(svgUrl);
 
-        ajax.onload = function(e) {
+          ajax.onload = function(e) {
              //if the status is not 404 do the replacement otherwise do nothing.
              if(ajax.status !== 404) {
 
-              var $svg = $(ajax.responseText);
-
               $imgInstances.each(function() {
                 var $this = $(this),
-                    classNames = $(this).attr('class');
+                    classNames = $this.attr('class'),
+                    $svg = $(ajax.responseText);
 
-                $svg.attr('class', classNames + ' loaded');
+                if (!$this.hasClass('loaded')){
+                  $svg.attr('class', classNames + ' loaded');
+                  $this.replaceWith($svg);
+                }
 
-                $this.replaceWith($svg);
+                $this.css('background-color', 'red'); 
               });  
               
             } 
@@ -42,7 +48,8 @@
             }
           }
         }
-      };
+      }
+    };
 
     //loop on inline SVGs loaded with the plugin
     this.each(function(){
@@ -50,6 +57,7 @@
         makeSVGInline($(this));
       //}
     });
+    ajaxRequests = [];
 
     $(window).load(function(){
 
@@ -71,6 +79,7 @@
           $newInlineSVGs.each(function(){
             makeSVGInline($(this)); 
           });
+          ajaxRequests = [];
         }
       });
 
